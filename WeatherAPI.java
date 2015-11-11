@@ -12,7 +12,7 @@ public class WeatherAPI {
 		state = "";
 	}
 
-	public static JSONObject getDataFromURL(String queryURL) {
+	public JSONObject getDataFromURL(String queryURL) {
 		String response = "";
 
 		try {
@@ -36,10 +36,7 @@ public class WeatherAPI {
 	}
 
 	public String getLatitudeLongitude(String query) {
-		return "";
-	}
 
-	public static void main(String[] args) {
-		System.out.println(getDataFromURL("http://taha.vasowalla.com/PeriodicTable.json").toString());
+		return "";
 	}
 }
