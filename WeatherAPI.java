@@ -1,3 +1,4 @@
+import org.json.*;
 import java.net.*;
 import java.io.*;
 
@@ -11,21 +12,34 @@ public class WeatherAPI {
 		state = "";
 	}
 
-	public String getDataFromURL(String queryURL) throws Exception {
-		URL requestURL = new URL(queryURL);
-		URLConnection connection = requestURL.openConnection();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	public static JSONObject getDataFromURL(String queryURL) {
 		String response = "";
-		String inputLine;
-		while((inputLine = reader.readLine()) != null) {
-			response += inputLine;
+
+		try {
+			URL requestURL = new URL(queryURL);
+			URLConnection connection = requestURL.openConnection();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String inputLine;
+			while((inputLine = reader.readLine()) != null) {
+				response += inputLine;
+			}
+
+			reader.close();
+			return new JSONObject(response);
+		}
+		catch(Exception e) {
+			System.out.println(e.toString());
+			System.exit(0);
 		}
 
-		reader.close();
-		System.out.println(response);
+		return new JSONObject();
 	}
 
 	public String getLatitudeLongitude(String query) {
 		return "";
+	}
+
+	public static void main(String[] args) {
+		System.out.println(getDataFromURL("http://taha.vasowalla.com/PeriodicTable.json").toString());
 	}
 }
