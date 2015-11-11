@@ -34,8 +34,12 @@ public class WeatherObject {
 		return new JSONObject();
 	}
 
-	public double getLatitudeLongitude() {
-		return ;
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public double getLatitude() {
+		return latitude;
 	}
 
 	public void setLatitudeLongitude(double lat, double lon) {
