@@ -2,12 +2,11 @@ import org.json.*;
 import java.net.*;
 import java.io.*;
 
-public class WeatherAPI {
-	private String city;
-	private String state;
+public class WeatherObject {
+	private double latitude, longitude;
 	private String weatherForecast;
 
-	public WeatherAPI() {
+	public WeatherObject() {
 		city = "";
 		state = "";
 	}
@@ -35,8 +34,12 @@ public class WeatherAPI {
 		return new JSONObject();
 	}
 
-	public String getLatitudeLongitude(String query) {
+	public double getLatitudeLongitude() {
+		return ;
+	}
 
-		return "";
+	public void setLatitudeLongitude(double lat, double lon) {
+		latitude = lat;
+		longitude = lon;
 	}
 }
