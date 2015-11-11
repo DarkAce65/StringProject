@@ -46,4 +46,9 @@ public class WeatherObject {
 		latitude = lat;
 		longitude = lon;
 	}
+
+	public String getWeatherForecast() {
+		JSONObject response = getDataFromURL();
+		return "";
+	}
 }
