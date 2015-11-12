@@ -4,11 +4,27 @@ import java.io.*;
 
 public class WeatherObject {
 	private WeatherLocation location;
+	private String apiKey;
 	private String weatherForecast;
 
 	public WeatherObject() {
 		location = new WeatherLocation();
 		weatherForecast = "";
+	}
+
+	public void setAPIKey() {
+		try {
+			FileReader fileReader = new FileReader("APIKEY");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			apiKey = bufferedReader.readLine();
+			bufferedReader.close();
+		}
+		catch(FileNotFoundException ex) {
+			System.out.println("Unable to open API key");
+		}
+		catch(IOException ex) {
+			System.out.println("Error reading API key");
+		}
 	}
 
 	public JSONObject getDataFromURL(String queryURL) {
@@ -35,7 +51,6 @@ public class WeatherObject {
 	}
 
 	public String getWeatherForecast() {
-		JSONObject response = getDataFromURL();
 		return "";
 	}
 }
