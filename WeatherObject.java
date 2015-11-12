@@ -8,6 +8,7 @@ public class WeatherObject {
 	private String weatherForecast;
 
 	public WeatherObject() {
+		setAPIKey();
 		location = new WeatherLocation();
 		weatherForecast = "";
 	}
@@ -51,6 +52,7 @@ public class WeatherObject {
 	}
 
 	public String getWeatherForecast() {
+		//getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
 		return "";
 	}
 }
