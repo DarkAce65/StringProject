@@ -7,8 +7,8 @@ public class WeatherObject {
 	private String weatherForecast;
 
 	public WeatherObject() {
-		city = "";
-		state = "";
+		location = new WeatherLocation();
+		weatherForecast = "";
 	}
 
 	public JSONObject getDataFromURL(String queryURL) {
