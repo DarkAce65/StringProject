@@ -38,8 +38,16 @@ public class WeatherObject {
 		return latitude;
 	}
 
+	public void setLatitude(double lat) {
+		latitude = lat;
+	}
+
 	public double getLatitude() {
 		return latitude;
+	}
+
+	public void setLongitude(double lon) {
+		longitude = lon;
 	}
 
 	public void setLatitudeLongitude(double lat, double lon) {
