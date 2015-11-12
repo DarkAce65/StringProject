@@ -3,7 +3,7 @@ import java.net.*;
 import java.io.*;
 
 public class WeatherObject {
-	private double latitude, longitude;
+	private WeatherLocation location;
 	private String weatherForecast;
 
 	public WeatherObject() {
@@ -32,27 +32,6 @@ public class WeatherObject {
 		}
 
 		return new JSONObject();
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double lat) {
-		latitude = lat;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLongitude(double lon) {
-		longitude = lon;
-	}
-
-	public void setLatitudeLongitude(double lat, double lon) {
-		latitude = lat;
-		longitude = lon;
 	}
 
 	public String getWeatherForecast() {
