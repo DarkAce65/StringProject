@@ -10,7 +10,7 @@ public class WeatherObject {
 	public WeatherObject() {
 		setAPIKey();
 		location = new WeatherLocation();
-		weatherForecast = new JSONObject();
+		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
 	}
 
 	public void setAPIKey() {
@@ -55,7 +55,7 @@ public class WeatherObject {
 		return weatherForecast;
 	}
 
-	public void setWeatherForecast() {
+	public void updateWeatherForecast() {
 		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
 	}
 }
