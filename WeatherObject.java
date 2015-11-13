@@ -13,6 +13,12 @@ public class WeatherObject {
 		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
 	}
 
+	public WeatherObject(double lat, double lon) {
+		setAPIKey();
+		location = new WeatherLocation(lat, lon);
+		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
+	}
+
 	public void setAPIKey() {
 		try {
 			FileReader fileReader = new FileReader("APIKEY");
