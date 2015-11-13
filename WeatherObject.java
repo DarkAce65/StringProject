@@ -88,10 +88,19 @@ public class WeatherObject {
 	}
 
 	/**
-	* Update weatherForecast by requesting data from API and parsing as JSONObject.
+	* Update weatherForecast using location object by requesting data from the openweathermap API.
 	*/
 	public void updateWeatherForecast() {
 		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&units=imperial&appid=" + apiKey);
+	}
+
+	/**
+	* Update weatherForecast using city and state by requesting data from the openweathermap API.
+	* @param city Name of city
+	* @param state Name of state
+	*/
+	public void updateWeatherForecast(String city, String state) {
+		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + "&units=imperial&appid=" + apiKey);
 	}
 
 	/**
