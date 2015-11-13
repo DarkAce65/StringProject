@@ -60,6 +60,11 @@ public class WeatherObject {
 	}
 
 	public void updateWeatherForecast() {
-		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
+		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&units=imperial&appid=" + apiKey);
+	}
+
+	public String toString() {
+		System.out.println(weatherForecast.getJSONArray("weather"));
+		return "It is " + weatherForecast.getJSONObject("main").getDouble("temp") + "°F in " + weatherForecast.getString("name") + ". There is currently ";
 	}
 }
