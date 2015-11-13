@@ -5,12 +5,12 @@ import java.io.*;
 public class WeatherObject {
 	private WeatherLocation location;
 	private String apiKey;
-	private String weatherForecast;
+	private JSONObject weatherForecast;
 
 	public WeatherObject() {
 		setAPIKey();
 		location = new WeatherLocation();
-		weatherForecast = "";
+		weatherForecast = new JSONObject();
 	}
 
 	public void setAPIKey() {
@@ -51,8 +51,11 @@ public class WeatherObject {
 		return new JSONObject();
 	}
 
-	public String getWeatherForecast() {
-		//getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
-		return "";
+	public JSONObject getWeatherForecast() {
+		return weatherForecast;
+	}
+
+	public void setWeatherForecast() {
+		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
 	}
 }
