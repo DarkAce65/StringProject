@@ -99,7 +99,7 @@ public class WeatherObject {
 	* @return A String with the current weather in a readable format
 	*/
 	public String toString() {
-		if(weatherForecast.getString("cod").charAt(0) == '2') {
+		if(weatherForecast.getInt("cod") / 100 == 2) {
 			JSONArray weatherConditions = weatherForecast.getJSONArray("weather");
 			String weatherCondition = "There is currently ";
 			for(int i = 0; i < weatherConditions.length(); i++) {
