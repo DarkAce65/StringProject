@@ -1,41 +1,42 @@
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class WeatherForecast extends JFrame implements ActionListener
 {
 	private JTextArea location, today, fiveDay;
 	private JButton go;
-	
-	
-	public WeatherForcast()
-	{
-	    super("WeatherForcast");
 
-	    setupForcaster();
+
+	public WeatherForecast()
+	{
+	    super("WeatherForecast");
+
+	    setUpForecaster();
 
 	    location.setText("City, State");
 
 	    refresh();
 	}
-	
+
 	public String getText()
 	{
 		return location.getText();
 	}
-	
+
 	public void refresh()
 	{
 	    String text = location.getText();
-	    
-	    
+
+
 	}
-	
+
 	public void actionPerformed(ActionEvent e)
 	{
 		refresh();
 	}
-	
-	private void setUpForcaster()
+
+	private void setUpForecaster()
 	{
 		location = new JTextArea(5, 10);
 	    location.setLineWrap(true);
@@ -66,11 +67,11 @@ public class WeatherForecast extends JFrame implements ActionListener
 	    box1.add(Box.createHorizontalStrut(10));
 	    box1.add(go);
 	    box1.add(Box.createHorizontalStrut(10));
-	   
+
 	    Box box2 = Box.createHorizontalBox();
-	    box2.add(Box.createhorizontalStrut(10));
+	    box2.add(Box.createHorizontalStrut(10));
 	    box2.add(todayPanel);
-	    box2.add(Box.createhorizontalStrut(100));
+	    box2.add(Box.createHorizontalStrut(100));
 	    Box box3 = Box.createVerticalBox();
 	    box3.add(box1);
 	    box3.add(Box.createVerticalStrut(20));
@@ -80,13 +81,13 @@ public class WeatherForecast extends JFrame implements ActionListener
 	    c.setLayout (new FlowLayout());
 	    c.add(box3);
 	}
-	
+
 	public static void main(String[]args)
 	{
-		WeatherForcast forcast = new WeatherForcast();
-		forcast.setBounds(100, 100, 480, 480);
-	    forcast.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	    forcast.setVisible(true);
+		WeatherForecast forecast = new WeatherForecast();
+		forecast.setBounds(100, 100, 480, 480);
+	    forecast.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    forecast.setVisible(true);
 	}
 
 }
