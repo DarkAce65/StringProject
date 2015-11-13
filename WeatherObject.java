@@ -51,6 +51,10 @@ public class WeatherObject {
 		return new JSONObject();
 	}
 
+	public WeatherLocation getLocation() {
+		return location;
+	}
+
 	public JSONObject getWeatherForecast() {
 		return weatherForecast;
 	}
