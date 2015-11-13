@@ -7,18 +7,27 @@ public class WeatherObject {
 	private String apiKey;
 	private JSONObject weatherForecast;
 
+	/**
+	* Class constructor.
+	*/
 	public WeatherObject() {
 		setAPIKey();
 		location = new WeatherLocation();
 		updateWeatherForecast();
 	}
 
+	/**
+	* Class constructor with latitude and longitude initialization.
+	*/
 	public WeatherObject(double lat, double lon) {
 		setAPIKey();
 		location = new WeatherLocation(lat, lon);
 		updateWeatherForecast();
 	}
 
+	/**
+	* Set apiKey from file.
+	*/
 	public void setAPIKey() {
 		try {
 			FileReader fileReader = new FileReader("APIKEY");
@@ -34,6 +43,11 @@ public class WeatherObject {
 		}
 	}
 
+	/**
+	* Read content from url.
+	* @param queryURL URL to read data from
+	* @return Parsed {@link JSONObject} of retrieved content
+	*/
 	public JSONObject getDataFromURL(String queryURL) {
 		String response = "";
 
@@ -57,18 +71,33 @@ public class WeatherObject {
 		return new JSONObject();
 	}
 
+	/**
+	* Get location object.
+	* @return A WeatherLocation object with coordinates of the current WeatherObject
+	*/
 	public WeatherLocation getLocation() {
 		return location;
 	}
 
+	/**
+	* Get weatherForecast.
+	* @return A JSONObject with the results of the openweathermap API at the current coordinates
+	*/
 	public JSONObject getWeatherForecast() {
 		return weatherForecast;
 	}
 
+	/**
+	* Update weatherForecast by requesting data from API and parsing as JSONObject.
+	*/
 	public void updateWeatherForecast() {
 		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&units=imperial&appid=" + apiKey);
 	}
 
+	/**
+	* Convert weatherForecast to human readable format.
+	* @return A String with the current weather in a readable format
+	*/
 	public String toString() {
 		if(weatherForecast.getString("cod").charAt(0) == '2') {
 			JSONArray weatherConditions = weatherForecast.getJSONArray("weather");
