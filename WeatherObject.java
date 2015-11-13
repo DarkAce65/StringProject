@@ -10,13 +10,13 @@ public class WeatherObject {
 	public WeatherObject() {
 		setAPIKey();
 		location = new WeatherLocation();
-		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
+		updateWeatherForecast();
 	}
 
 	public WeatherObject(double lat, double lon) {
 		setAPIKey();
 		location = new WeatherLocation(lat, lon);
-		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + apiKey);
+		updateWeatherForecast();
 	}
 
 	public void setAPIKey() {
