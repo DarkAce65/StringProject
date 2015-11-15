@@ -26,6 +26,15 @@ public class WeatherObject {
 	}
 
 	/**
+	* Class constructor with city and state initialization.
+	*/
+	public WeatherObject(String city, String state) {
+		setAPIKey();
+		location = new WeatherLocation();
+		updateWeatherForecast(city, state);
+	}
+
+	/**
 	* Set apiKey from file.
 	*/
 	public void setAPIKey() {
@@ -101,6 +110,7 @@ public class WeatherObject {
 	*/
 	public void updateWeatherForecast(String city, String state) {
 		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + "&units=imperial&appid=" + apiKey);
+		location.setLatitudeLongitude(weatherForecast.getJSONObject("coord").getDouble("lat"), weatherForecast.getJSONObject("coord").getDouble("lon"));
 	}
 
 	/**
