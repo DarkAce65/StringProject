@@ -27,7 +27,7 @@ public class WeatherForecast extends JFrame implements ActionListener {
 		catch(StringIndexOutOfBoundsException e) {
 			today.setText("Please enter the name of a city,\nfollowed by a comma, then a space,\n" +
 				"then the name of the state in which the city is located.\n" +
-				"E.G. Boston, Massachusetts or  Boston, MA");
+				"E.G. Boston, Massachusetts or Boston, MA");
 		}
 	}
 
