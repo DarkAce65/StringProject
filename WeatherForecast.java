@@ -31,6 +31,7 @@ public class WeatherForecast extends JFrame implements ActionListener
 			String state = text.substring(text.indexOf(',') +  2, text.length());
 
 			weather.updateWeatherForecast(city, state);
+			today.setText(weather.toString());
 
 	}
 
@@ -41,13 +42,13 @@ public class WeatherForecast extends JFrame implements ActionListener
 
 	private void setUpForecaster()
 	{
-		location = new JTextArea(5, 10);
+		location = new JTextArea(3, 15);
 	    location.setLineWrap(true);
 	    location.setWrapStyleWord(true);
 	    JPanel locationPanel = new JPanel();
 	    locationPanel.add(location);
 
-	    today = new JTextArea(10, 10);
+	    today = new JTextArea(10, 30);
 	    today.setEditable(false);
 	    today.setBackground(Color.LIGHT_GRAY);
 	    today.setLineWrap(true);
@@ -65,19 +66,22 @@ public class WeatherForecast extends JFrame implements ActionListener
 	    go.addActionListener(this);
 
 	    Box box1 = Box.createHorizontalBox();
-	    box1.add(Box.createHorizontalStrut(10));
+	    box1.add(Box.createHorizontalStrut(5));
 	    box1.add(locationPanel);
-	    box1.add(Box.createHorizontalStrut(10));
+	    box1.add(Box.createHorizontalStrut(5));
 	    box1.add(go);
-	    box1.add(Box.createHorizontalStrut(10));
+	    box1.add(Box.createHorizontalStrut(5));
 
 	    Box box2 = Box.createHorizontalBox();
-	    box2.add(Box.createHorizontalStrut(10));
+	    box2.add(Box.createHorizontalStrut(5));
 	    box2.add(todayPanel);
-	    box2.add(Box.createHorizontalStrut(100));
+	    box2.add(Box.createHorizontalStrut(5));
+
 	    Box box3 = Box.createVerticalBox();
+			box3.add(Box.createVerticalStrut(10));
 	    box3.add(box1);
 	    box3.add(Box.createVerticalStrut(20));
+			box3.add(Box.createVerticalGlue());
 	    box3.add(box2);
 
 	    Container c = getContentPane();
@@ -88,7 +92,7 @@ public class WeatherForecast extends JFrame implements ActionListener
 	public static void main(String[]args)
 	{
 		WeatherForecast forecast = new WeatherForecast();
-		forecast.setBounds(100, 100, 400, 400);
+		forecast.setBounds(400, 400, 400, 300);
 	    forecast.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    forecast.setVisible(true);
 	}
