@@ -30,7 +30,7 @@ public class WeatherForecast extends JFrame implements ActionListener
 			String city = text.substring(0, text.indexOf(','));
 			String state = text.substring(text.indexOf(',') +  2, text.length());
 
-			//weather.updateWeatherForecast(city, state);
+			weather.updateWeatherForecast(city, state);
 
 	}
 
