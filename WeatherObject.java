@@ -120,17 +120,19 @@ public class WeatherObject {
 	public String toString() {
 		if(weatherForecast.getInt("cod") / 100 == 2) {
 			JSONArray weatherConditions = weatherForecast.getJSONArray("weather");
-			String weatherCondition = "There is currently ";
+			String weatherCondition = "Current weather conditions: ";
+
 			for(int i = 0; i < weatherConditions.length(); i++) {
 				weatherCondition += weatherConditions.getJSONObject(i).getString("description") + ", ";
 			}
 			weatherCondition = weatherCondition.substring(0, weatherCondition.length() - 2);
+
 			int commaIndex = weatherCondition.lastIndexOf(',');
 			if(commaIndex != -1) {
 				weatherCondition = new StringBuffer(weatherCondition).replace(commaIndex, commaIndex + 1, " and").toString();
 			}
 
-			return "It is " + weatherForecast.getJSONObject("main").getDouble("temp") + "\u00b0F in " + weatherForecast.getString("name") + ", " + weatherForecast.getJSONObject("sys").getString("country") + ". " + weatherCondition + ".";
+			return "Weather for " + weatherForecast.getString("name") + ", " + weatherForecast.getJSONObject("sys").getString("country") + "\nIt is " + weatherForecast.getJSONObject("main").getDouble("temp") + "\u00b0F with " + weatherForecast.getJSONObject("clouds").getInt("all") + " percent cloud cover.\n" + weatherCondition + "\n";
 		}
 		return "There was an error retrieving the weather forecast.";
 	}
