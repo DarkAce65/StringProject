@@ -61,7 +61,7 @@ public class WeatherObject {
 		String response = "";
 
 		try {
-			URL requestURL = new URL(queryURL);
+			URL requestURL = new URL(URLEncoder.encode(queryURL));
 			URLConnection connection = requestURL.openConnection();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String inputLine;
