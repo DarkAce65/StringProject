@@ -130,7 +130,7 @@ public class WeatherObject {
 
 			int commaIndex = weatherCondition.lastIndexOf(',');
 			if(commaIndex != -1) {
-				weatherCondition = new StringBuffer(weatherCondition).replace(commaIndex, commaIndex + 1, " and").toString();
+				weatherCondition = weatherCondition.substring(0, commaIndex) + " and" + weatherCondition.substring(commaIndex + 1);
 			}
 
 			return "Weather for " + weatherForecast.getString("name") + ", " + weatherForecast.getJSONObject("sys").getString("country") + "\nIt is " + weatherForecast.getJSONObject("main").getDouble("temp") + "\u00b0F with " + weatherForecast.getJSONObject("clouds").getInt("all") + " percent cloud cover.\n" + weatherCondition + "\n";
