@@ -24,7 +24,7 @@ public class WeatherForecast extends JFrame implements ActionListener
 	    String text = location.getText();
 			try{
 			  String city = text.substring(0, text.indexOf(','));
-			  String state = text.substring(text.indexOf(',') +  1, text.length());
+			  String state = text.substring(text.indexOf(',') +  2, text.length());
 				weather.updateWeatherForecast(city, state);
 				today.setText(weather.toString());
 		 } catch (StringIndexOutOfBoundsException e){
