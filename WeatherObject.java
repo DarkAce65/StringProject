@@ -61,7 +61,7 @@ public class WeatherObject {
 		String response = "";
 
 		try {
-			URL requestURL = new URL(URLEncoder.encode(queryURL));
+			URL requestURL = new URL(queryURL);
 			URLConnection connection = requestURL.openConnection();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String inputLine;
@@ -109,7 +109,8 @@ public class WeatherObject {
 	* @param state Name of state
 	*/
 	public void updateWeatherForecast(String city, String state) {
-		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + "&units=imperial&appid=" + apiKey);
+		String query = city + "," + state;
+		weatherForecast = getDataFromURL("http://api.openweathermap.org/data/2.5/weather?q=" + URLEncoder.encode(query) + "&units=imperial&appid=" + apiKey);
 		location.setLatitudeLongitude(weatherForecast.getJSONObject("coord").getDouble("lat"), weatherForecast.getJSONObject("coord").getDouble("lon"));
 	}
 
