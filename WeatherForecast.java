@@ -12,8 +12,6 @@ public class WeatherForecast extends JFrame implements ActionListener {
 		setUpForecaster();
 
 		location.setText("City, State");
-
-		refresh();
 	}
 
 	public void refresh() {
