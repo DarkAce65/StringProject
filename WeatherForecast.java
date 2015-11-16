@@ -19,19 +19,19 @@ public class WeatherForecast extends JFrame implements ActionListener
 	    refresh();
 	}
 
-	public String getText()
-	{
-		return location.getText();
-	}
-
 	public void refresh()
 	{
 	    String text = location.getText();
-			String city = text.substring(0, text.indexOf(','));
-			String state = text.substring(text.indexOf(',') +  2, text.length());
-
-			weather.updateWeatherForecast(city, state);
-			today.setText(weather.toString());
+			try{
+			  String city = text.substring(0, text.indexOf(','));
+			  String state = text.substring(text.indexOf(',') +  2, text.length());
+				weather.updateWeatherForecast(city, state);
+				today.setText(weather.toString());
+		 } catch (StringIndexOutOfBoundsException e){
+				today.setText("Please enter the name of a city,\nfollowed by a comma, then a space,\n" +
+											"then the name of the state in which the city is located.\n" +
+											"E.G. Boston, Massachusetts or  Boston, MA");
+			}
 
 	}
 
@@ -55,12 +55,6 @@ public class WeatherForecast extends JFrame implements ActionListener
 	    today.setWrapStyleWord(true);
 	    JPanel todayPanel = new JPanel();
 	    todayPanel.add(today);
-
-	    fiveDay = new JTextArea(10, 10);
-	    fiveDay.setEditable(false);
-	    fiveDay.setBackground(Color.LIGHT_GRAY);
-	    JPanel fiveDayPanel = new JPanel();
-	    fiveDayPanel.add(fiveDay);
 
 	    go = new JButton("Refresh");
 	    go.addActionListener(this);
