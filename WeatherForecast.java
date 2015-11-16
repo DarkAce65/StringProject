@@ -6,7 +6,7 @@ public class WeatherForecast extends JFrame implements ActionListener
 {
 	private JTextArea location, today, fiveDay;
 	private JButton go;
-
+  private WeatherObject weather = new WeatherObject();
 
 	public WeatherForecast()
 	{
@@ -27,7 +27,10 @@ public class WeatherForecast extends JFrame implements ActionListener
 	public void refresh()
 	{
 	    String text = location.getText();
+			String city = text.substring(0, text.indexOf(','));
+			String state = text.substring(text.indexOf(',') +  2, text.length());
 
+			weather.updateWeatherForecast(city, state);
 
 	}
 
@@ -85,7 +88,7 @@ public class WeatherForecast extends JFrame implements ActionListener
 	public static void main(String[]args)
 	{
 		WeatherForecast forecast = new WeatherForecast();
-		forecast.setBounds(100, 100, 480, 480);
+		forecast.setBounds(100, 100, 400, 400);
 	    forecast.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    forecast.setVisible(true);
 	}
